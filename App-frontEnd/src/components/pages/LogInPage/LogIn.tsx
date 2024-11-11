@@ -30,7 +30,7 @@ export const LogIn = () => {
                     {/*    Register*/}
                     {/*</button>*/}
                     <Button animated type="submit" className={"RegisterButton"} onClick={navigateToRegister}>
-                        <ButtonContent visible>Register</ButtonContent>
+                        <ButtonContent visible className="buttonText">Register</ButtonContent>
                         <ButtonContent hidden>
                             <Icon name='arrow right' />
                         </ButtonContent>

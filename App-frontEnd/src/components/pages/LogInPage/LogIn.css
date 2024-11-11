@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .backGround {
+    display: flex;
     position: absolute;
     background-image:url("C:/Users/HELLO/Downloads/bg proiectColectiv.png");
     background-size: cover;
@@ -10,13 +11,15 @@
 }
 .ui.image.LogoLogIn {
     position: relative;
-    top: 15%;
+    top: 9%;
+    width: 12vw;
 }
 
 .h1{
     font-family: "Poppins", sans-serif;
     font-weight: 900; /*!proprietatea ca sa facem fontul bold*!*/
-    font-size: 65px;
+    /*font-size: 65px;*/
+    font-size: 5vw;
     color: #C1CEF5;
     position: absolute;
 }
@@ -32,19 +35,29 @@
 }
 
 .leftSection{
+    flex: 1; /*ocupa 50% din inaltime pe ecranele mai mari*/
     width: 400px;
     height: 300px;
     position: relative;
     top: 30px;
     left: -290px;
+    padding: 0.3vw;
+    margin-right: 20px;
+}
+
+.buttonText{
+    font-family: 'Poppins', sans-serif;
+    font-size:small;
+    font-weight: bolder;
+    color: #C1CEF5
 }
 
 .ui.animated.button.RegisterButton{
     top:65%;
-    width: 180px;
+    width: 150px;
     left:2px;
     position: absolute;
-    background-color: #C1CEF5;
+    background-color: #4260D8;
 }
 
 
@@ -103,12 +116,18 @@
 
 
 @media only screen and (min-width: 412px) {
+        .ui.small.image.LogoLogIn {
+            position: relative;
+            top: 7%;
+            width: 12vw;
+        }
+
         .LogInContainerLogIn {
             position: absolute;
-            border-radius: 18px;
+            border-radius: 10px;
             top: 15%;
             height: 75%;
-            width: 30%;
+            width: 28vw;
             background-image: url("C:/Users/HELLO/Downloads/pagina de login.png");
             left : 59%;
             background-color : transparent;

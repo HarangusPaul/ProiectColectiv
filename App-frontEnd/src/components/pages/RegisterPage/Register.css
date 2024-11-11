@@ -15,8 +15,13 @@
     width: 26%;
 }
 
+.LogoRegister{
+    position : absolute;
+    top : 2%;
+}
 
-@media only screen and (max-width: 1360px) {
+
+@media only screen and (min-width: 1360px) {
     .RegisterContainer {
         position: absolute;
         background: white;
@@ -25,18 +30,6 @@
         left: 37.5%;
         height: 65%;
         width: 25%;
-    }
-}
-
-@media only screen and (max-width: 412px) {
-    .RegisterContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 20%;
-        left: 17.5%;
-        height: 50%;
-        width: 70%;
     }
 }
 
@@ -53,8 +46,21 @@
 }
 
 
+@media only screen and (min-width: 412px) {
+    .RegisterContainer {
+        position: absolute;
+        border-radius: 18px;
+        top: 8%;
+        height: 85%;
+        width: 30%;
+        background-image: url("C:/Users/HELLO/Downloads/pagina de register.png");
+        background-color : transparent;
+    }
+}
+
+
 
 .ui.image.LogoReg{
     position: relative;
-    top:2%;
+    top:4%;
 }

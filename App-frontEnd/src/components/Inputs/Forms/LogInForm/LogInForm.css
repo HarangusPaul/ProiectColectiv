@@ -65,6 +65,12 @@
     align-content: center;
 }
 
+.buttonText{
+    font-family: 'Poppins', sans-serif;
+    font-size:small;
+    font-weight: bolder;
+}
+
 
 @media only screen and (min-width: 1360px) {
     .LogInContainer {
@@ -268,24 +274,34 @@
         }
 
         .ui.animated.button.SendButtonLogIn {
-            top: 87%;
-            width: 180px;
-            left: 27%;
+            top: 89%;
+            width: 22vw;
+            left: 13%;
             position: absolute;
-            background-color: #C1CEF5;
+            background-color: #4260D8;
+        }
+
+        .ui.input.EmailLogIn>input{
+            background: transparent !important;
+            border: none !important;
         }
 
         .ui.input.EmailLogIn {
             position: absolute;
             margin-bottom: 40px;
             /* height: 20px; */
-            width: 270px;
-            left: 15%;
+            width: 22vw;
+            left: 12%;
             text-align: left;
             outline: none;
             top: 43%;
             border: 2px solid #C1CEF5;
-            border-radius: 15px;
+            border-radius: 7px;
+        }
+
+        .ui.input.PasswordLogIn>input{
+            background: transparent !important;
+            border: none !important;
         }
 
 
@@ -295,13 +311,13 @@
             border-left: white;
             border-right: white;
             /* height: 20px; */
-            width: 270px;
-            left: 15%;
+            width: 22vw;
+            left: 12%;
             text-align: left;
-            top: 60%;
+            top: 62%;
             outline: none;
             border: 2px solid #C1CEF5;
-            border-radius: 15px;
+            border-radius: 7px;
             background : transparent
         }
     }

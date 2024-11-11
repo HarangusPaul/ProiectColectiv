@@ -79,7 +79,7 @@ export const LogInForm= () =>{
                 {error?(<label className={"errorLabelLogIn"}>The credentials are incorrect!</label>):(<></>)}
 
             <Button animated type="submit" className={"SendButtonLogIn"} onClick={(e) => {submit(e)}}>
-                <ButtonContent visible>Log In</ButtonContent>
+                <ButtonContent visible className="buttonText">Log In</ButtonContent>
                 <ButtonContent hidden>
                     <Icon name='arrow right' />
                 </ButtonContent>
