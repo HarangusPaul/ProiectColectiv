@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class AccountManageController {
     private final AccountCredentialsService accountCredentialsService;
 
-
-
     private final AccountDetailsService accountDetailsService;
 
     public AccountManageController(AccountCredentialsService accountCredentialsService, AccountDetailsService accountDetailsService) {
