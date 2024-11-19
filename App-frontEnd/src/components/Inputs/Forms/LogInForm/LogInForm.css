@@ -276,7 +276,7 @@
         .ui.animated.button.SendButtonLogIn {
             top: 89%;
             width: 22vw;
-            left: 13%;
+            left: 15%;
             position: absolute;
             background-color: #4260D8;
         }
@@ -291,7 +291,7 @@
             margin-bottom: 40px;
             /* height: 20px; */
             width: 22vw;
-            left: 12%;
+            left: 15%;
             text-align: left;
             outline: none;
             top: 43%;
@@ -312,7 +312,7 @@
             border-right: white;
             /* height: 20px; */
             width: 22vw;
-            left: 12%;
+            left: 15%;
             text-align: left;
             top: 62%;
             outline: none;

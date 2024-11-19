@@ -39,7 +39,7 @@ export const LogIn = () => {
                 <div>
                     <div className="LogInContainerLogIn">
                         <Image
-                            src="https://cdn.discordapp.com/attachments/1219648191474176000/1300441864662683729/iepuras_degerat.png?ex=67222bdd&is=6720da5d&hm=8000a6770caef12b598b6175abe7a1390247fdd1acbedd071c61d8b996b46aa7&"
+                            src="https://cdn.discordapp.com/attachments/1219648191474176000/1300441864662683729/iepuras_degerat.png?ex=673ddb5d&is=673c89dd&hm=d66b87035afebab6d6d44b914d04195e38a4236d88ba70d980a3c5ddd61463eb&"
                             className="LogoLogIn"
                             size="small"
                             wrapped
