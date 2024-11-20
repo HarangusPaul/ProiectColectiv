@@ -22,10 +22,10 @@ public class Document extends BaseEntity{
     @Column
     private LocalDateTime date;
 
-    @Column
+    @Column(length = 100000)
     private String data;
 
-    @Column
+    @Column(length = 100000)
     private String base64;
 
     @OneToOne(cascade = CascadeType.ALL)

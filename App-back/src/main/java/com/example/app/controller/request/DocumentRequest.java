@@ -32,7 +32,7 @@ public class DocumentRequest {
 
 
     public Document returnDocumentEntity(AccountCredentials user) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         LocalDate localDate = LocalDate.parse(date, formatter);
 
