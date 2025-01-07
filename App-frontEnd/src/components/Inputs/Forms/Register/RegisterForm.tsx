@@ -57,7 +57,6 @@ export const RegisterForm= () =>{
     }
 
     return (
-        <div className="formDiv">
             <form className={"form"}>
                 <Input type="text" className={"Email"} placeholder="Email" onChange={(e)=>{
                     setEmail(e.target.value);
@@ -71,7 +70,7 @@ export const RegisterForm= () =>{
                     setPassword(e.target.value);
                     setError(false);
                 }}/>
-                <Input type="password" className={"ConfirmPassword"} placeholder="confirmedPassword" onChange={(e)=>{
+                <Input type="password" className={"ConfirmPassword"} placeholder="Confirm Password" onChange={(e)=>{
                     setConfirmedPassword(e.target.value);
                     setError(false);
                 }}/>
@@ -84,6 +83,5 @@ export const RegisterForm= () =>{
                 </ButtonContent>
             </Button>
             </form>
-        </div>
     )
 }

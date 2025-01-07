@@ -9,46 +9,99 @@
     width: 100vw; /* Ocupă toată lățimea paginii */
 }
 .ui.image.LogoLogIn {
-    position: relative;
-    top: 15%;
+    width: 45%;
+    margin-top: 10%;
 }
 
-.h1{
-    font-family: "Poppins", sans-serif;
-    font-weight: 900; /*!proprietatea ca sa facem fontul bold*!*/
-    font-size: 65px;
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.LogInContainerLogIn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  /* Aligns items to the top */
+    width: 60%;
+    height: 75vh;
+    background-image: linear-gradient(to bottom, #4a5a7d, #1e2941);
+    border-radius: 18px;
+    padding: 2rem;
+    gap: 2rem;  /* Adds space between elements */
+}
+
+.right-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 2rem;
+}
+
+.welcome-title{
+    font-family: "Visby CF Extra Bold", sans-serif;
+    font-weight: 700;
+    font-size: 135px;
     color: #C1CEF5;
-    position: absolute;
+    letter-spacing: -5px;
+    margin: 0;  /* Reset any default margins */
+    line-height: 1.2;  /* Improves text spacing */
+
 }
 
-.bodyText{
-    position : absolute;
-    font-family: "Poppins", sans-serif;
-    font-size: 13px;
+.welcome-text{
+    font-family: "Visby CF", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
     color: #919DC3;
     text-align: left;
-    position: absolute;
-    top : 110px;
+    line-height: 1.5;
+    width: 80%;
+    margin: 0;  /* Reset any default margins */
 }
 
 .leftSection{
-    width: 400px;
-    height: 300px;
-    position: relative;
-    top: 30px;
-    left: -290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;  /* Adds space between elements */
+    padding: 5rem;
+    margin-left: 10rem;
+    margin-bottom:10rem;
+    width: 50%;
+}
+
+.welcome-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.register-button-container{
+    display: flex;
+    width: fit-content;  /* Container only as wide as the title */
+    margin-left: 0;     /* Aligns with left edge of welcome message */
+    width: 75%;
+    padding: 0 10% 0 10%;
 }
 
 .ui.animated.button.RegisterButton{
-    top:65%;
-    width: 180px;
-    left:2px;
-    position: absolute;
+    width: 100%;
     background-color: #C1CEF5;
+    margin-top: 2rem;  /* Add some space above the button */
+    font-size: 1.5rem;
+    border-radius: 1rem;
+
+    
+    
 }
 
 
-@media only screen and (max-width: 1920px) {
+/*@media only screen and (max-width: 1920px) {
     .ui.image.LogoLogIn {
         position: relative;
         top: 7%;
@@ -115,3 +168,4 @@
         }
 }
 
+*/

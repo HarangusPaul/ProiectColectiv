@@ -1,60 +1,25 @@
-.backGround{
-    position: absolute;
-    background: black;
-    height: 100%;
+.backGround {
+    min-height: 100vh;
     width: 100%;
+    background: #1B2934;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .RegisterContainer {
-    position: absolute;
-    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    min-height: 65vh;
+    background-image: linear-gradient(to bottom, #4a5a7d, #1e2941);
     border-radius: 25px;
-    top: 20%;
-    left: 35.5%;
-    height: 80%;
-    width: 26%;
+    padding: 2rem;
+    gap: 2rem;
 }
 
-
-@media only screen and (max-width: 1360px) {
-    .RegisterContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 15%;
-        left: 37.5%;
-        height: 65%;
-        width: 25%;
-    }
-}
-
-@media only screen and (max-width: 412px) {
-    .RegisterContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 20%;
-        left: 17.5%;
-        height: 50%;
-        width: 70%;
-    }
-}
-
-@media only screen and (min-width: 1360px) {
-    .RegisterContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 15%;
-        left: 33.5%;
-        height: 65%;
-        width: 30%;
-    }
-}
-
-
-
-.ui.image.LogoReg{
-    position: relative;
-    top:2%;
+.ui.image.LogoReg {
+    width: 35%;
+    margin-bottom: 1rem;
 }

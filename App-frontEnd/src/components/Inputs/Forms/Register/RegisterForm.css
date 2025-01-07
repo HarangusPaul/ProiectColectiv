@@ -1,109 +1,40 @@
-.InputField {
-    border-bottom: black;
-    border-style: none;
-    outline: none;
-}
-/*.ui.input.Email*/
-/*.ui.input.Username*/
-/*.ui.input.Password*/
-/*.ui.input.ConfirmPassword*/
-
-
-.ui.input.Email {
-    position: absolute;
-    border-top: white;
-    border-left: black;
-    border-right: white;
-    margin-bottom: 40px;
-    /* height: 20px; */
-    width: 20vw;
-    left: 11%;
-    text-align: left;
-    top: 25%;
-    outline: none;
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    gap: 1.5rem;
 }
 
-.ui.input.Username {
-    position: absolute;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    margin-bottom: 40px;
-    /* height: 20px; */
-    width: 20vw;
-    left: 11%;
-    text-align: left;
-    top: 40%;
-    outline: none;
-}
-
-
-
-.ui.input.Password {
-    position: absolute;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    /* height: 20px; */
-    width: 20vw;
-    left: 11%;
-    text-align: left;
-    top: 55%;
-    outline: none;
-}
-
-
+.ui.input.Email,
+.ui.input.Username,
+.ui.input.Password,
 .ui.input.ConfirmPassword {
-    position: absolute;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    /* height: 20px; */
-    width: 20vw;
-    left: 11%;
-    text-align: left;
-    top: 70%;
-    outline: none;
+    width: 100%;
+    font-size: 1.3rem;
+    border: 2px solid #C1CEF5;
+    border-radius: 15px;
 }
 
-@media (max-width: 1150px) {
-    .ui.input.Email{
-        width: 55vw;
-    }
-    /*.ui.input.Username*/
-    /*.ui.input.Password*/
-    /*.ui.input.ConfirmPassword*/
+.ui.input.Email > input,
+.ui.input.Username > input,
+.ui.input.Password > input,
+.ui.input.ConfirmPassword > input {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #C1CEF5;
 }
 
-.ui.animated.button.SendButton{
-    top:90%;
+.ui.animated.button.SendButton {
     width: 180px;
-    left:140px;
-    position: absolute;
-}
-
-.formDiv{
-    display: flex;
-    flex-wrap: wrap;
-    position: absolute;
-    align-content: center;
-    bottom: 50px;
-    width: 90%;
-    height: 70%;
-}
-.form{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+    background-color: #485EB8;
+    color: white;
+    margin-top: 2rem;
 }
 
 .errorLabel {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    top:620%;
-    left: 170px;
     color: darkred;
-    width: 100%;
-    align-content: center;
+    font-size: 1.3rem;
+    text-align: center;
 }
