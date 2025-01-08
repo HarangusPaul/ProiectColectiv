@@ -1,4 +1,4 @@
-import {Button, Modal, ModalActions, ModalContent, ModalHeader} from "semantic-ui-react";
+import {Button, Divider, Modal, ModalActions, ModalContent, ModalHeader} from "semantic-ui-react";
 import React, {useEffect} from "react";
 import './ResponsesModal.css'
 
@@ -29,13 +29,19 @@ export const ResponsesModal = (props: any) => {
                onClose={() => {
                    if (props.props.setOpen != undefined) props.setOpen(false)
                }}
+               style={{
+                   borderRadius: "10px",
+                   // padding: "5px",
+                   backgroundColor: "#28304B"
+               }}
         >
-            <ModalHeader>{props.props.header}</ModalHeader>
-            <ModalContent>
+            <ModalHeader style={{backgroundColor:"#38405A", color:"#C1CEF5", borderTopRightRadius: "7px", borderTopLeftRadius: "7px"}} >{props.props.header} </ModalHeader>
+            <ModalContent style={{backgroundColor:"transparent", color:"#919DC3"}}>
                 <p>{props.props.text}</p>
             </ModalContent>
-            <ModalActions>
-                <Button positive onClick={() => {
+            <Divider style={{left:"5%"}}/>
+            <ModalActions style={{backgroundColor:"transparent"}}>
+                <Button className="responseModalBtn" positive onClick={() => {
                     setOpen(false)
                 }}>
                     {props.props.messageButton}

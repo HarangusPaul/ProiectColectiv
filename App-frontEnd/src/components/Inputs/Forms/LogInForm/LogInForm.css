@@ -4,246 +4,140 @@
     outline: none;
 }
 
-.ui.input.EmailLogIn{
-    position: absolute;
-    border-top: white ;
-    border-left: white ;
-    border-right: white ;
-    margin-bottom: 40px;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
-    text-align: left;
-    top:40%;
-    outline: none;
-}
-
-.ui.input.PasswordLogIn{
-    position: absolute;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
-    text-align: left;
-    top:55%;
-    outline: none;
-}
-
-.ui.animated.button.SendButtonLogIn{
-    top:80%;
-    width: 180px;
-    left:140px;
-    position: absolute;
-}
-
-.formDiv{
+.LogInForm {
     display: flex;
-    flex-wrap: wrap;
-    position: absolute;
-    align-content: center;
-    bottom: 50px;
-    width: 90%;
-    height: 70%;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;  
 }
-.form{
+
+.ui.input.EmailLogIn,
+.ui.input.PasswordLogIn {
+    width: 70%; 
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    border: 3px solid #C1CEF5;
+    border-radius: 15px;
+    color: #C1CEF5;
+}
+
+
+
+.ui.input.EmailLogIn>input::placeholder, 
+.ui.input.PasswordLogIn>input::placeholder{
+    color: #C1CEF5;
+}
+
+.ui.input.EmailLogIn>input:focus, 
+.ui.input.PasswordLogIn>input:focus{
+    color: #C1CEF5;
+}
+
+.ui.input.EmailLogIn>input:focus::placeholder, 
+.ui.input.PasswordLogIn>input:focus::placeholder{
+    opacity: 0;
+}
+
+.InputFields{
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
 }
+
+
+.ui.animated.button.SendButtonLogIn {
+    width: 70%;
+    background-color: #485EB8;
+    margin-top: 1rem;
+    color: white;
+    font-size: 1.3rem;
+}
+
+
+.ui.input.PasswordLogIn>input,
+.ui.input.EmailLogIn>input{
+    background: transparent !important;
+    border: none !important;
+    font-size: 1.3rem;
+    color: #C1CEF5;
+}
+
+
+
 
 .errorLabelLogIn {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    top:415%;
-    left: 77%;
+
     color: darkred;
+    font-size: 1.3rem;
     width: 100%;
     align-content: center;
 }
 
-
-@media only screen and (max-width: 1600px) {
-    .LogInContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 20%;
-        left: 35.5%;
-        height: 50%;
-        width: 26%;
-    }
-
-    .ui.animated.button.SendButtonLogIn {
-        top: 80%;
-        width: 180px;
-        left: 27%;
-        position: absolute;
-    }
-
-    .ui.input.PasswordLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        /* height: 20px; */
-        width: 295px;
-        left: 15%;
-        text-align: left;
-        top: 55%;
-        outline: none;
-    }
-
-    .ui.input.EmailLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        margin-bottom: 40px;
-        /* height: 20px; */
-        width: 295px;
-        left: 15%;
-        text-align: left;
-        top: 40%;
-        outline: none;
-    }
-
-    .ui.LogoLogIn {
-        position: relative;
-        top: 11%;
-    }
-
-    .errorLabelLogIn {
+@media (max-width: 1440px) {
+    .LogInForm {
         display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        top: 350%;
-        left: 44%;
-        color: darkred;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
-        align-content: center;
+        gap: 1rem;  
     }
-}
-
-
-@media only screen and (max-width: 1480px) {
-    .LogInContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 20%;
-        left: 35.5%;
-        height: 50%;
-        width: 26%;
-    }
-
-    .ui.animated.button.SendButtonLogIn {
-        top: 80%;
-        width: 180px;
-        left: 25%;
-        position: absolute;
-    }
-
+    
+    .ui.input.EmailLogIn,
     .ui.input.PasswordLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        /* height: 20px; */
-        width: 250px;
-        left: 15%;
-        text-align: left;
-        top: 55%;
-        outline: none;
+        width: 70%; 
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem;
+        border: 2px solid #C1CEF5;
+        border-radius: 15px;
+        color: #C1CEF5;
     }
-
-    .ui.input.EmailLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        margin-bottom: 40px;
-        /* height: 20px; */
-        width: 250px;
-        left: 15%;
-        text-align: left;
-        top: 40%;
-        outline: none;
+    
+    
+    
+    .ui.input.EmailLogIn>input::placeholder, 
+    .ui.input.PasswordLogIn>input::placeholder{
+        color: #C1CEF5;
     }
-
-    .ui.LogoLogIn {
-        position: relative;
-        top: 11%;
+    
+    .ui.input.EmailLogIn>input:focus, 
+    .ui.input.PasswordLogIn>input:focus{
+        color: #C1CEF5;
     }
-
-    .errorLabelLogIn {
+    
+    .ui.input.EmailLogIn>input:focus::placeholder, 
+    .ui.input.PasswordLogIn>input:focus::placeholder{
+        opacity: 0;
+    }
+    
+    .InputFields{
         display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        top: 350%;
-        left: 44%;
-        color: darkred;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
-        align-content: center;
+        gap: 0.5rem;
+        margin-top: 2.5rem;
     }
-}
-
-
-@media only screen and (max-width: 412px) {
-    .LogInContainer {
-        position: absolute;
-        background: white;
-        border-radius: 25px;
-        top: 20%;
-        left: 17.5%;
-        height: 50%;
-        width: 70%;
-    }
-
+    
+    
     .ui.animated.button.SendButtonLogIn {
-        top: 80%;
-        width: 180px;
-        left: 20%;
-        position: absolute;
+        width: 50%;
+        background-color: #485EB8;
+        margin-top: 0.5rem;
+        color: white;
+        font-size: 1rem;
     }
-
-    .ui.input.EmailLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        margin-bottom: 40px;
-        /* height: 20px; */
-        width: 210px;
-        left: 15%;
-        text-align: left;
-        top: 40%;
-        outline: none;
+    
+    
+    .ui.input.PasswordLogIn>input,
+    .ui.input.EmailLogIn>input{
+        background: transparent !important;
+        border: none !important;
+        font-size: 1rem;
+        color: #C1CEF5;
     }
-
-    .ui.input.PasswordLogIn {
-        position: absolute;
-        border-top: white;
-        border-left: white;
-        border-right: white;
-        /* height: 20px; */
-        width: 210px;
-        left: 15%;
-        text-align: left;
-        top: 55%;
-        outline: none;
-    }
-
-    .errorLabelLogIn {
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        top: 415%;
-        left: 29%;
-        color: darkred;
-        width: 100%;
-        align-content: center;
-    }
+    
 }

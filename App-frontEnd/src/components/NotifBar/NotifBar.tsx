@@ -25,7 +25,7 @@ export const NotificationBar = (props:notificationsProps) =>{
 
 
     return (<div className={"NotificationDiv"}>
-        <Header className={"NotificationHeader"}>Notifications:</Header>
+        <Header className={"NotificationHeader"}>Inbox</Header>
         <Divider className={"NotificationDivider"}/>
         <div className={"NotificationContainer"}>
         {

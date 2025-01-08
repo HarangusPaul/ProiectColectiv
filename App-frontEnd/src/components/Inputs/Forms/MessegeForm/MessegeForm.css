@@ -1,0 +1,9 @@
+
+.ui.input.MessegeInput{
+    width: 28vw;
+    padding-right: 10px;
+}
+
+.ui.input.MessegeInput>input{
+    border-radius:20px !important;
+}

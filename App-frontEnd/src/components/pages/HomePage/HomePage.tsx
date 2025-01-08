@@ -8,6 +8,9 @@ import {ApprovalModal} from "../../Modals/Dialog/ApprovementModal/ApprovalModal"
 import DropdownButton from "../../Inputs/Buttons/DropdownButton/DropdownButton";
 import {ChoiceModal, ModalPropsChoice} from "../../Modals/Dialog/ChoiceModal/ChoiceModal";
 import {NotificationModal} from "../../Modals/Dialog/NotificationModal/NotificationModal";
+import {UploadButton} from "../../Inputs/Buttons/UploadButton/UploadButton";
+import {DocumentForm} from "../../Inputs/Forms/DocumentForm/DocumentForm";
+import FormModal from "../../Modals/Dialog/FormModal/FormModal";
 
 
 export const HomePage = () => {
@@ -28,10 +31,25 @@ export const HomePage = () => {
         options: dropdownOptions
     }
 
+
+
     return (
         <div>
             <div className={"backGround"}>
                 <div className={"appView"}>
+                    <div className="textContainer">
+                        <h1 className="h1homePage">Home Page</h1>
+                        <h2 className="h2helloUser">Hello *USER*!</h2>
+                        <p className="notificationText">You have *N* notifications!</p>
+                        <p className="informationText">
+                            Document Page: Upload your document here! <br />
+                            Interview Page: Start your interview here! <br />
+                            Companies Page: Check out the companies suited for you here!
+                        </p>
+                    </div>
+
+                    {/*<FormModal modalTitle={"Upload your document"} form={(<DocumentForm/>)} open={state} setOpen={setState} style={{}}/>*/}
+                    {/*<Button onClick={()=>setState(true)}></Button>*/}
                     {/*<Button onClick={() => setState(true)}>*/}
                     {/*    ApprovementModal*/}
                     {/*</Button>*/}
