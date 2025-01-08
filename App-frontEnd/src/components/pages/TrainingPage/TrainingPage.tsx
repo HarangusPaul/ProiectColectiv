@@ -114,8 +114,8 @@ export const AvatarPage = () => {
         }
     }
 
-    const navigateToInterview = () => {
-        navigate("/Interview")
+    const navigateToTraining = () => {
+        navigate("/Training")
     }
 
     useEffect (() => {
@@ -148,7 +148,7 @@ export const AvatarPage = () => {
                             await closeConnectionHandler(sesionInternface);
                             setConnection(false);
                         }
-                        navigateToInterview();
+                        navigateToTraining();
                     }}>
                         Exit
                     </Button>
