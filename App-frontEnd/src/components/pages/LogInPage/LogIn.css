@@ -32,7 +32,7 @@
     gap: 2rem;  /* Adds space between elements */
 }
 
-.right-section {
+.right-section-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,7 @@
     margin: 0;  /* Reset any default margins */
 }
 
-.leftSection{
+.left-section-login{
     display: flex;
     flex-direction: column;
     justify-content: center;

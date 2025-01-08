@@ -58,19 +58,15 @@
 }
 
 
-.ui.input.PasswordLogIn>input{
-    background: transparent !important;
-    border: none !important;
-    font-size: 1.3rem;
-    color: #C1CEF5;
-}
-
+.ui.input.PasswordLogIn>input,
 .ui.input.EmailLogIn>input{
     background: transparent !important;
     border: none !important;
     font-size: 1.3rem;
     color: #C1CEF5;
 }
+
+
 
 
 .errorLabelLogIn {

@@ -1,25 +1,97 @@
 .backGround {
-    min-height: 100vh;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background: #1B2934;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .RegisterContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
-    min-height: 65vh;
+    justify-content: flex-start;  /* Aligns items to the top */
+    width: 60%;
+    min-height: 70vh;
+    max-height: 95vh;
     background-image: linear-gradient(to bottom, #4a5a7d, #1e2941);
-    border-radius: 25px;
+    border-radius: 18px;
     padding: 2rem;
+    gap: 2rem;  /* Adds space between elements */
+}
+
+.register-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.left-section-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 2rem;
+}
+
+.right-section-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;  /* Adds space between elements */
+    padding: 5rem;
+    margin-bottom:10rem;
+    width: 50%;
+}
+
+.welcome-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     gap: 2rem;
 }
 
+.welcome-title{
+    font-family: "Visby CF Extra Bold", sans-serif;
+    font-weight: 700;
+    font-size: 135px;
+    color: #C1CEF5;
+    letter-spacing: -5px;
+    margin: 0;  /* Reset any default margins */
+    line-height: 1.2;  /* Improves text spacing */
+
+}
+
+.welcome-text{
+    font-family: "Visby CF", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #919DC3;
+    text-align: left;
+    line-height: 1.5;
+    width: 80%;
+    margin: 0;  /* Reset any default margins */
+}
+
 .ui.image.LogoReg {
-    width: 35%;
-    margin-bottom: 1rem;
+    width: 45%;
+}
+
+.login-button-container {
+    display: flex;
+    width: fit-content;  /* Container only as wide as the title */
+    margin-left: 0;     /* Aligns with left edge of welcome message */
+    width: 75%;
+    padding: 0 10% 0 10%;
+}
+
+.ui.animated.button.LoginButton{
+    width: 80%;
+    background-color: #C1CEF5;
+    margin-top: 2rem;  /* Add some space above the button */
+    font-size: 1.5rem;
+    border-radius: 1rem;
 }
