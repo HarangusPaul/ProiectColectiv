@@ -52,7 +52,7 @@
 .ui.animated.button.SendButtonLogIn {
     width: 70%;
     background-color: #485EB8;
-    margin-top: 2rem;
+    margin-top: 1rem;
     color: white;
     font-size: 1.3rem;
 }
@@ -77,4 +77,67 @@
     align-content: center;
 }
 
-
+@media (max-width: 1440px) {
+    .LogInForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;  
+    }
+    
+    .ui.input.EmailLogIn,
+    .ui.input.PasswordLogIn {
+        width: 70%; 
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem;
+        border: 2px solid #C1CEF5;
+        border-radius: 15px;
+        color: #C1CEF5;
+    }
+    
+    
+    
+    .ui.input.EmailLogIn>input::placeholder, 
+    .ui.input.PasswordLogIn>input::placeholder{
+        color: #C1CEF5;
+    }
+    
+    .ui.input.EmailLogIn>input:focus, 
+    .ui.input.PasswordLogIn>input:focus{
+        color: #C1CEF5;
+    }
+    
+    .ui.input.EmailLogIn>input:focus::placeholder, 
+    .ui.input.PasswordLogIn>input:focus::placeholder{
+        opacity: 0;
+    }
+    
+    .InputFields{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 2.5rem;
+    }
+    
+    
+    .ui.animated.button.SendButtonLogIn {
+        width: 50%;
+        background-color: #485EB8;
+        margin-top: 0.5rem;
+        color: white;
+        font-size: 1rem;
+    }
+    
+    
+    .ui.input.PasswordLogIn>input,
+    .ui.input.EmailLogIn>input{
+        background: transparent !important;
+        border: none !important;
+        font-size: 1rem;
+        color: #C1CEF5;
+    }
+    
+}
