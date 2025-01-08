@@ -65,9 +65,6 @@
 }
 
 
-
-
-
 .validation-messages p {
     margin: 0.5rem 0;
     font-size: 1rem;
@@ -93,4 +90,120 @@
 .validation-messages p.invalid::before {
     content: '×';
     margin-right: 8px;
+}
+
+
+@media (max-width: 1440px) {
+    .LogInForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;  
+    }
+    
+    .ui.input.Email,
+    .ui.input.Username,
+    .ui.input.Password,
+    .ui.input.ConfirmPassword {
+        width: 70%; 
+        font-size: 1rem !important;
+        margin-bottom: 0.2rem;
+        border: 2px solid #C1CEF5;
+        border-radius: 15px;
+        color: #C1CEF5;
+    }
+    
+    
+    
+    .ui.input.Email>input::placeholder, 
+    .ui.input.Username>input::placeholder,
+    .ui.input.Password>input::placeholder,
+    .ui.input.ConfirmPassword>input::placeholder{
+        color: #C1CEF5;
+    }
+    
+    .ui.input.Email>input:focus, 
+    .ui.input.Username>input:focus,
+    .ui.input.Password>input:focus,
+    .ui.input.ConfirmPassword>input:focus{
+        color: #C1CEF5;
+    }
+    
+    .ui.input.Email>input:focus::placeholder, 
+    .ui.input.Password>input:focus::placeholder,
+    .ui.input.ConfirmPassword>input:focus::placeholder{
+        opacity: 0;
+    }
+    
+    .InputFields{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        margin-top: 0rem;
+    }
+    
+    
+    .ui.animated.button.SendButton {
+        background-color: #485EB8;
+        margin-top: 0rem;
+        color: white;
+        font-size: 0.8rem;
+    }
+    
+    
+    .ui.input.Password>input,
+    .ui.input.Email>input,
+    .ui.input.Username>input,
+    .ui.input.ConfirmPassword>input{
+        background: transparent !important;
+        border: none !important;
+        font-size: 0.8rem;
+        color: #C1CEF5;
+    }
+
+    .errorLabel {
+        color: darkred;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+    .validation-messages {
+        width: 100%;
+        border-radius: 8px;
+        background: rgba(40, 48, 75, 0.3);
+        overflow: hidden;
+        padding: 0.2rem;
+    }
+    
+    
+    .validation-messages p {
+        margin: 0.2rem 0;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        color: #C1CEF5;
+        transform-origin: top;
+    }
+    
+    .validation-messages p.valid {
+        color: #4CAF50;
+    }
+    
+    .validation-messages p.valid::before {
+        content: '✓';
+        margin-right: 8px;
+    }
+    
+    .validation-messages p.invalid {
+        color: #FF5252;
+    }
+    
+    .validation-messages p.invalid::before {
+        content: '×';
+        margin-right: 8px;
+    }
+    
 }

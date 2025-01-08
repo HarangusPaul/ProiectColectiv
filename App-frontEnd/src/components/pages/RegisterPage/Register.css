@@ -95,3 +95,29 @@
     font-size: 1.5rem;
     border-radius: 1rem;
 }
+
+@media (max-width: 1440px) {
+    .welcome-title{
+        font-size: 80px;
+    }
+
+    .welcome-text{
+        font-size: 18px;
+    }
+
+    .ui.animated.button.LoginButton{
+        width: 60%;
+        background-color: #C1CEF5;
+        margin-top: 0.5rem; 
+        font-size: 1rem;
+        border-radius: 1rem;
+    }
+
+    .login-button-container{
+        display: flex;
+        width: fit-content;  
+        margin-left: 10%;    
+        width: 75%;
+        padding: 0 10% 0 10%;
+    }
+}   
