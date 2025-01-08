@@ -13,15 +13,6 @@ export const LogIn = () => {
     navigate("/register");
   };
 
-  // return (
-  //     <div className={"backGround"}>
-  //         <div className={"LogInContainerLogIn"}>
-  //             <Image src='https://cdn.discordapp.com/attachments/1219648191474176000/1300441864662683729/iepuras_degerat.png?ex=67222bdd&is=6720da5d&hm=8000a6770caef12b598b6175abe7a1390247fdd1acbedd071c61d8b996b46aa7&' className={"LogoLogIn"} size='small' wrapped />
-  //             <LogInForm></LogInForm>
-  //             <a onClick={navigateToRegister} className={"hyperToRegister"}>Don't have an account?go to register</a>
-  //         </div>
-  //     </div>
-  // );
   return (
     <div className="backGround">
       <div className="login-container">
@@ -33,9 +24,6 @@ export const LogIn = () => {
               register by clicking the button below
             </div>
           </div>
-          {/*<button onClick={navigateToRegister} className="hyperToRegister">*/}
-          {/*    Register*/}
-          {/*</button>*/}
           <div className="register-button-container">
             <Button
               animated
