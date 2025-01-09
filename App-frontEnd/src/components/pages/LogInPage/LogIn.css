@@ -16,15 +16,16 @@
 .h1{
     font-family: "Poppins", sans-serif;
     font-weight: 900; /*!proprietatea ca sa facem fontul bold*!*/
-    font-size: 65px;
+    font-size: 5.2vw;
     color: #C1CEF5;
     position: absolute;
+    top: -1vw;
 }
 
 .bodyText{
     position : absolute;
     font-family: "Poppins", sans-serif;
-    font-size: 13px;
+    font-size: 0.97vw;
     color: #919DC3;
     text-align: left;
     position: absolute;
@@ -32,19 +33,21 @@
 }
 
 .leftSection{
-    width: 400px;
+    width: 500px;
     height: 300px;
     position: relative;
-    top: 30px;
-    left: -290px;
+    top: 27px;
+    left: -350px;
 }
 
 .ui.animated.button.RegisterButton{
     top:65%;
     width: 180px;
+    height: 40px;
     left:2px;
     position: absolute;
-    background-color: #C1CEF5;
+    background-color: #4260D8;
+    color: #C1CEF5;
 }
 
 
@@ -103,12 +106,17 @@
 
 
 @media only screen and (min-width: 412px) {
+        .LogoLogIn {
+            position: relative;
+            top: 10%;
+            width: 12vw;
+        }
         .LogInContainerLogIn {
             position: absolute;
             border-radius: 18px;
             top: 15%;
-            height: 75%;
-            width: 30%;
+            height: 35vw;
+            width: 28vw;
             background-image: linear-gradient(to bottom, #4a5a7d, #1e2941);
             left : 59%;
             background-color : transparent;

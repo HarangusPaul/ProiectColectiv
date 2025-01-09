@@ -93,7 +93,7 @@
 
     .ui.animated.button.SendButtonLogIn {
         top: 80%;
-        width: 180px;
+        width: 250px;
         left: 25%;
         position: absolute;
     }
@@ -275,7 +275,7 @@
             position: absolute;
             background: white;
             border-radius: 15px;
-            top: 20%;
+            top: 10%;
             left: 17.5%;
             height: 50%;
             width: 70%;
@@ -283,23 +283,24 @@
 
         .ui.animated.button.SendButtonLogIn {
             top: 87%;
-            width: 180px;
-            left: 27%;
+            width: 280px;
+            left: 19%;
             position: absolute;
-            background-color: #C1CEF5;
+            background-color: #4260D8;
+            color: #C1CEF5;
         }
 
         .ui.input.EmailLogIn {
             position: absolute;
             margin-bottom: 40px;
-            /* height: 20px; */
-            width: 270px;
-            left: 15%;
+            height: 3vw;
+            width: 19vw;
+            left: 17.5%;
             text-align: left;
             outline: none;
             top: 43%;
             border: 2px solid #C1CEF5;
-            border-radius: 15px;
+            border-radius: 10px;
         }
 
 
@@ -308,14 +309,14 @@
             border-top: white;
             border-left: white;
             border-right: white;
-            /* height: 20px; */
-            width: 270px;
-            left: 15%;
+            height: 3vw;
+            width: 19vw;
+            left: 17.5%;
             text-align: left;
             top: 60%;
             outline: none;
             border: 2px solid #C1CEF5;
-            border-radius: 15px;
+            border-radius: 10px;
             background : transparent
         }
     }
