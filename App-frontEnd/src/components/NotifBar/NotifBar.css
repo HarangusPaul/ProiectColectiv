@@ -1,13 +1,16 @@
 .NotificationDiv{
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 200;
     background: #1B2134;
     width: 25.5%;
     right: 0;
     height: 100%;
+    pointer-events: none;
 }
+
 .ui.header.NotificationHeader{
     position : relative;
+    z-index: 200;
     font-family: 'Poppins', sans-serif;
     font-weight: bolder;
     font-size: 28px;

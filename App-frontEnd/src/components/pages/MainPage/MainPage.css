@@ -41,16 +41,16 @@
 .ui.button.NotificationButton{
     position: absolute;
     right:0;
-    z-index: 2;
+    z-index: 1100;
     background: transparent;
     height: 40px;
     width: 40px;
 }
 
 .bell.IconBell{
-    position: relative;
-    left: -5px;
-    z-index: 2;
+    position: fixed;
+    left: 1500px;
+    z-index: 2000;
     width: 10px;
     height: 10px;
 }
