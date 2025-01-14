@@ -66,13 +66,12 @@ export const LogInForm= () =>{
 
     return (
         <div className="formDiv">
-
             <form className={"form"}>
             <Input type="text" className={"EmailLogIn"} placeholder="Email" onChange={(e)=>{
                 setEmail(e.target.value);
                 setError(false);
             }}/>
-            <Input type="password" className={"PasswordLogIn"} placeholder="Password" onChange={(e)=>{
+            <Input type="password" className={"PasswordLogIn"} placeholder="Password"  onChange={(e)=>{
                 setPassword(e.target.value);
                 setError(false);
             }}/>
@@ -80,7 +79,7 @@ export const LogInForm= () =>{
                 {error?(<label className={"errorLabelLogIn"}>The credentials are incorrect!</label>):(<></>)}
 
             <Button animated type="submit" className={"SendButtonLogIn"} onClick={(e) => {submit(e)}}>
-                <ButtonContent visible>Next</ButtonContent>
+                <ButtonContent visible>Log In</ButtonContent>
                 <ButtonContent hidden>
                     <Icon name='arrow right' />
                 </ButtonContent>

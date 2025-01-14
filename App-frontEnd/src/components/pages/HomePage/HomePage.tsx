@@ -8,6 +8,9 @@ import {ApprovalModal} from "../../Modals/Dialog/ApprovementModal/ApprovalModal"
 import DropdownButton from "../../Inputs/Buttons/DropdownButton/DropdownButton";
 import {ChoiceModal, ModalPropsChoice} from "../../Modals/Dialog/ChoiceModal/ChoiceModal";
 import {NotificationModal} from "../../Modals/Dialog/NotificationModal/NotificationModal";
+import {UploadButton} from "../../Inputs/Buttons/UploadButton/UploadButton";
+import {DocumentForm} from "../../Inputs/Forms/DocumentForm/DocumentForm";
+import FormModal from "../../Modals/Dialog/FormModal/FormModal";
 
 
 export const HomePage = () => {
@@ -28,46 +31,23 @@ export const HomePage = () => {
         options: dropdownOptions
     }
 
+
+
     return (
         <div>
             <div className={"backGround"}>
                 <div className={"appView"}>
-                    {/*<Button onClick={() => setState(true)}>*/}
-                    {/*    ApprovementModal*/}
-                    {/*</Button>*/}
+                    <div className="textContainer">
+                        {/*<h1 className="h1homePage">Home Page</h1>*/}
+                        <h2 className="h2helloUser">Welcome, user!</h2>
+                        <p className="notificationText">You have *N* notifications!</p>
+                        <p className="informationText">
+                            Document Page: Upload your document here! <br />
+                            Interview Page: Start your interview here! <br />
+                            Companies Page: Check out the companies suited for you here!
+                        </p>
+                    </div>
 
-                    {/*<ApprovalModal props={{open:state,setOpen:setState,text:"Do you want to do this knowing the consequences?",header:"Approve",messageButton1:"Approve", messageButton2: "Reject"}}/>*/}
-                    {/*<Button onClick={() => setState(true)}>*/}
-                    {/*    Login*/}
-                    {/*</Button>*/}
-
-                    {/*<ResponsesModal props={{open:state,setOpen:setState,text:"You've been logged in successfully!",header:"Login",messageButton:"Ok"}}/>*/}
-                    {/*<Button onClick={() => setState(true)}>*/}
-                    {/*    Sure, retry!*/}
-                    {/*</Button>*/}
-
-                    {/*<ChoiceModal props={modalProps}/>*/}
-                    {/*<Button onClick={() => setState(true)}>*/}
-                    {/*        ChoiceModal*/}
-                    {/*</Button>*/}
-
-                    {/*
-                    multiple: attribute can be 'true' or 'false'
-                    search: attribute can be 'true' or 'false'
-                    */
-                    }
-                    {/*<DropdownButton multiple={true} search={true}/>*/}
-
-                    {/*<NotificationModal props={{*/}
-                    {/*    open: state,*/}
-                    {/*    setOpen: setState,*/}
-                    {/*    text: "Notification description",*/}
-                    {/*    header: "Notification Name",*/}
-                    {/*    messageButton: "Close"*/}
-                    {/*}}/>*/}
-                    {/*<Button onClick={() => setState(true)}>*/}
-                    {/*    NotificationModal*/}
-                    {/*</Button>*/}
                 </div>
                 {/*<ErrorModal props={{open:state,setOpen:setState,text:"You've encountered an error!",header:"Error",messageButton1:"Sure, exit!", messageButton2:"Sure, Retry!"}}/>*/}
             </div>

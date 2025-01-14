@@ -1,0 +1,7 @@
+.ui.modal>.header:not(.ui) {
+    font-family: 'Poppins', sans-serif; !important;
+    font-size: 1.42857143rem;
+    line-height: 1.28571429em;
+    font-weight: 700;
+
+}

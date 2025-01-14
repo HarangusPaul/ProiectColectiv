@@ -1,32 +1,78 @@
-.ui.labeled.icon.menu .item.signOut{
-    position: relative;
-    top:68%;
-}
-
-.ui.labeled.icon.menu.navbar{
+/* Base Styles */
+.ui.labeled.icon.menu.navbar {
     height: 100%;
+    width: 6vw;
+    background-color: #38405A;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Prevent content overflow when shrinking */
 }
 
+/* Navbar Items */
+.ui.labeled.icon.menu .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+    color: #FFF;
+    transition: all 0.3s ease;
+}
 
-@media only screen and (max-width: 1440px) {
-    .ui.labeled.icon.menu .item.signOut {
-        position: relative;
-        top: 71%;
+/* SignOut Button */
+.ui.labeled.icon.menu .item.signOut {
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+/* Shrink Navbar for Medium Screens */
+@media only screen and (max-width: 1024px) {
+    .ui.labeled.icon.menu.navbar {
+        width: 80px; /* Shrink width */
+    }
+
+    .ui.labeled.icon.menu .item {
+        font-size: 0.8rem; /* Smaller text */
+    }
+
+    .ui.labeled.icon.menu .item i {
+        font-size: 1.2rem; /* Adjust icon size */
     }
 }
 
-@media only screen and (max-width: 1360px) {
-
-    .ui.labeled.icon.menu .item.signOut {
-        position: relative;
-        top: 62%;
+/* Shrink Further for Small Screens */
+@media only screen and (max-width: 768px) {
+    .ui.labeled.icon.menu.navbar {
+        width: 50px; /* Shrink width further */
     }
 
+    .ui.labeled.icon.menu .item {
+        font-size: 0.6rem; /* Smaller text */
+    }
+
+    .ui.labeled.icon.menu .item i {
+        font-size: 1rem; /* Smaller icons */
+    }
+
+    .ui.labeled.icon.menu .item span {
+        display: none; /* Hide text completely */
+    }
 }
 
-@media only screen and (max-width: 412px){
+/* Extra Small Screens */
+@media only screen and (max-width: 480px) {
+    .ui.labeled.icon.menu.navbar {
+        width: 40px; /* Minimal width */
+    }
+
+    .ui.labeled.icon.menu .item {
+        padding: 0.5rem 0;
+    }
+
     .ui.labeled.icon.menu .item.signOut {
-        position: relative;
-        top: 68%;
+        margin-bottom: 0.5rem;
     }
 }

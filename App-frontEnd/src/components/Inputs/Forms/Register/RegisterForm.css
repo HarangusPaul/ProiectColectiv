@@ -3,59 +3,76 @@
     border-style: none;
     outline: none;
 }
+/*.ui.input.Email*/
+/*.ui.input.Username*/
+/*.ui.input.Password*/
+/*.ui.input.ConfirmPassword*/
 
-.ui.input.Email{
+
+.ui.input.Email {
     position: absolute;
-    border-top: white ;
-    border-left: white ;
-    border-right: white ;
+    border-top: white;
+    border-left: black;
+    border-right: white;
     margin-bottom: 40px;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
+    /* height: 20px; */
+    width: 20vw;
+    left: 11%;
     text-align: left;
-    top:25%;
+    top: 25%;
     outline: none;
 }
 
-.ui.input.Username{
-    position: absolute;
-    border-top: white ;
-    border-left: white ;
-    border-right: white ;
-    margin-bottom: 40px;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
-    text-align: left;
-    top:40%;
-    outline: none;
-}
-
-.ui.input.Password{
+.ui.input.Username {
     position: absolute;
     border-top: white;
     border-left: white;
     border-right: white;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
+    margin-bottom: 40px;
+    /* height: 20px; */
+    width: 20vw;
+    left: 11%;
     text-align: left;
-    top:55%;
+    top: 40%;
     outline: none;
 }
 
-.ui.input.ConfirmPassword{
+
+
+.ui.input.Password {
     position: absolute;
     border-top: white;
     border-left: white;
     border-right: white;
-    /*height: 20px;*/
-    width: 250px;
-    left:25%;
+    /* height: 20px; */
+    width: 20vw;
+    left: 11%;
     text-align: left;
-    top:70%;
+    top: 55%;
     outline: none;
+}
+
+
+.ui.input.ConfirmPassword {
+    position: absolute;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    /* height: 20px; */
+    width: 20vw;
+    left: 11%;
+    text-align: left;
+    top: 70%;
+    outline: none;
+}
+
+@media (max-width: 1150px) {
+    .ui.input.Email{
+        width: 55vw;
+    }
+    /*.ui.input.Username*/
+    /*.ui.input.Password*/
+    /*.ui.input.ConfirmPassword*/
 }
 
 .ui.animated.button.SendButton{

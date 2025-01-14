@@ -1,0 +1,45 @@
+.jobUploadForm {
+    background: #28304B; /* Slightly transparent background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.formLabel {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #C1CEF5;
+}
+
+.ui.input input {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Light border */
+}
+
+.submitButton {
+    background-color: #4260D8; /* Match your design color */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    bottom: 2vh;
+    align-self: center;
+}
+
+.ui.form .field>label {
+     color: #C1CEF5 !important;
+}
+.ui.form .field {
+    width: 100%;
+}
+/*.parentBigDiv{*/
+/*    display: grid;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 10vh;*/
+/*    width: 20vw;*/
+/*}*/
+
+/*.bigDiv{*/
+/*    position: relative;*/
+/*    align-self: center;*/
+/*}*/

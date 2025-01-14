@@ -1,0 +1,32 @@
+.headCell{
+    top: 50px;
+    background-color: #919DC3;
+    width: 1160px;
+
+}
+
+td{
+    width: 290px;
+    height: 50px;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    padding-left: 15px;
+    color: #919DC3;
+    border-bottom: solid 0.01px #354163;
+}
+
+/*tr:first-child th{*/
+/*    border-spacing: 0; !* Elimină spațiul doar pentru primul rând *!*/
+/*    border-collapse: collapse; !* Asigură eliminarea completă *!*/
+/*}*/
+
+th{
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    padding-left: 15px;
+    color: white;
+    height: 50px;
+    border-radius: 7px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
