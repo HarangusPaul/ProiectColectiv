@@ -2,7 +2,7 @@ import React from 'react';
 import './Interview.css';
 import {Button, ButtonContent, Icon, Image, Dropdown} from "semantic-ui-react";
 import {useNavigate} from "react-router-dom";
-import avatarImage from "./avatar _persona.png";
+// import avatarImage from "./avatar _persona.png";
 
 export const Interview = () => {
      const navigate = useNavigate();
@@ -31,7 +31,7 @@ export const Interview = () => {
                 <Button className="goToAvatar" onClick={navigateToAvatar}>Start interview</Button>
             </div>
             <div className="rightSection2">
-                <img src={avatarImage} alt="Avatar" style={{width:"750px" , height:"750px"}}/>
+                {/*<img src={avatarImage} alt="Avatar" style={{width:"750px" , height:"750px"}}/>*/}
             </div>
         </div>
      );
