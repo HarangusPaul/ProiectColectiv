@@ -1,0 +1,21 @@
+/* Ensure you're targeting the modal's background specifically */
+.ui.modal.transition.visible.active {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.42857143rem;
+    line-height: 1.28571429em;
+    font-weight: 700;
+    background-color: #4a5a7d !important; /* Add !important to override inline or higher specificity styles */
+    color: #1B2134; /* Optional: Set text color for better contrast */
+}
+
+/* Optional: Modify modal header for consistency */
+.ui.modal .header {
+    background-color: #3e4a61 !important;
+    color: #FFFFFF;
+}
+
+/* Optional: Adjust button styles */
+.ui.modal .actions .button {
+    background-color: #6c82b0 !important;
+    color: #FFFFFF !important;
+}

@@ -52,14 +52,14 @@ export const NavBar = () =>{
                 active={false}
                 onClick={() => { navigateTo("/Companys") }}
             >
-                <Icon name='file archive outline' />
-                Companys
+                <Icon name='building' />
+                Companies
             </MenuItem>:<MenuItem
                 name='Page 3'
                 active={false}
                 onClick={() => { navigateTo("/EmployPage") }}
             >
-                <Icon name='file archive outline' />
+                <Icon name='group' />
                 EmployPage
             </MenuItem>}
 
@@ -72,6 +72,22 @@ export const NavBar = () =>{
                 {! type?"Interview":"Manage Interview"}
             </MenuItem>
 
+
+            {type?<MenuItem
+                name='Page 3'
+                active={false}
+                onClick={() => { navigateTo("/PricePage") }}
+            >
+                <Icon name='dollar sign' />
+                Price
+            </MenuItem>:<MenuItem
+                name='Page 3'
+                active={false}
+                onClick={() => { navigateTo("/PricePage") }}
+            >
+                <Icon name='dollar sign' />
+                Price
+            </MenuItem>}
 
             <MenuItem className={"signOut"}
                 name='Sign out'
