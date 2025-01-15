@@ -49,4 +49,14 @@ public class DocumentController {
         }
     }
 
+    @GetMapping("/getCompanyData")
+    public String getCompanyDocumentData(@RequestParam String email){
+        try {
+            var documentData = documentService.returnCompanyData(email);
+            return documentData;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 }

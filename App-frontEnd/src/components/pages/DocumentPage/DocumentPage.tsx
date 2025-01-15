@@ -8,7 +8,7 @@ import {DocumentForm} from "../../Inputs/Forms/DocumentForm/DocumentForm";
 import {DocumentTable, DocumentTableProps} from "../../Inputs/Table/DocumentTable";
 import axios from "axios";
 
-interface UserData {
+export interface UserData {
     name: string;
     date: string;
     data: string;

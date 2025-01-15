@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./CompanyDocumentPage.css";
 import { Button, Divider } from "semantic-ui-react";
 import FormModal from "../../Modals/Dialog/FormModal/FormModal";
@@ -7,6 +7,7 @@ import { JobUploadForm } from "../../Inputs/Forms/JobUploadForm/JobUploadForm";
 import { DocumentTable, DocumentTableProps } from "../../Inputs/Table/DocumentTable";
 import { SimpleTable, SimpleTableProps } from "../../Inputs/Table/SimpleTable";
 import FormModalStyle from "../../Modals/Dialog/FormModal/FormModalStyle";
+import axios from "axios";
 
 export interface JobData {
     jobTitle: string;
@@ -21,9 +22,8 @@ export const CompanyDocumentPage: React.FC = () => {
         ["SoftDev", "Python, React", "10/10"]
     ]);
 
-    const jobNames = ["Job Title", "Required Skills", "Salary Range"];
+    const jobNames = ["Job Title", "Required Skills", "Salary Range","Description"];
     const [jobValues, setJobValues] = useState<string[][]>([
-        ["Software Engineer", "JavaScript, Node.js", "$70,000 - $90,000"]
     ]);
 
     const data: DocumentTableProps = {
@@ -39,7 +39,21 @@ export const CompanyDocumentPage: React.FC = () => {
     const [openJobModal, setOpenJobModal] = useState<boolean>(false);
 
 
-
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        if(token !== null){
+            axios.get("http://localhost:8080/app/v2/documents/getCompanyData?email=paulharangus@gmail.com", {
+                headers: {
+                    'Authorization': `Bearer ${JSON.parse(token).token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res)=>{
+                console.log(res.data)
+                setJobValues(res.data)
+                // setValues(mapData(res.data))
+            })
+        }
+    },[])
 
     return (
         <div className={"backGround"}>
@@ -57,7 +71,7 @@ export const CompanyDocumentPage: React.FC = () => {
                     style={{ fontFamily: "'Comic-Sans', sans-serif", fontSize: "16px" }}
                 />
                 <FormModalStyle
-                    form={<JobUploadForm />} // Pass handleJobSubmit
+                    form={<JobUploadForm currentJobs={jobValues} />} // Pass handleJobSubmit
                     modalTitle={"Upload Job Listing"}
                     open={openJobModal}
                     setOpen={setOpenJobModal}
@@ -85,8 +99,8 @@ export const CompanyDocumentPage: React.FC = () => {
 
                 <Divider />
 
-                <h3 className="tableTitle">Uploaded Documents</h3>
-                <DocumentTable props={data} />
+                {/*<h3 className="tableTitle">Uploaded Documents</h3>*/}
+                {/*<DocumentTable props={data} />*/}
 
                 <h3 className="tableTitle">Matching Users</h3>
                 <SimpleTable props={{
