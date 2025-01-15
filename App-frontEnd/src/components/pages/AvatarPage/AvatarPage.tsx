@@ -1,7 +1,7 @@
 import {
     BackgroundInterface,
     closeConnectionHandler,
-    createNewSession, hideElement, renderCanvas,
+    createNewSession, hideElement, messageTextSubject, MessegeSubject, renderCanvas,
     SessionInterface, showElement,
     startAndDisplaySession, talkHandler
 } from "../../../services/hygen/AvatarService";
@@ -10,7 +10,7 @@ import "./AvatarPage.css"
 import {Button, TextArea} from "semantic-ui-react";
 import {MessegeForm} from "../../Inputs/Forms/MessegeForm/MessegeForm";
 import {useNavigate} from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 export const AvatarPage = () => {
     const avatarId = "Kristin_public_2_20240108";
@@ -22,6 +22,8 @@ export const AvatarPage = () => {
     const [visibleCanvasElement, setVisibleCanvasElement] = useState(false);
     const background = "url(\"'https://www.cleanpng.com/png-background-transparent-png-clipart-4998260/'\") center / contain no-repeat"
     const navigate = useNavigate();
+    const [messegeList, setMessegeList] = useState<string[]>([])
+
 
     const updateStatus = (message: any, priority?: number) => {
         if (priority === undefined) {
@@ -48,6 +50,12 @@ export const AvatarPage = () => {
             // setHideLogo(true);
             // setSesionInterface(value)
             console.log("Valoarea lui sessionInfo este", value)
+            MessegeSubject.subscribe({
+                next: (value: string) => {
+                    setMsg1(value)
+                    setMsg2("...")
+                }
+            })
             startSession(value);
         })
     }
@@ -100,13 +108,13 @@ export const AvatarPage = () => {
         }
     }, [visibleCanvasElement]);
 
-    useEffect(()=>{
-        if(sesionInternface){
+    useEffect(() => {
+        if (sesionInternface) {
             setTimeout(() => {
                 talk("Hi,you are a interviewer for the rest of this conversation and you are asking questions about software development.Start by welcoming!")
-            },5000)
+            }, 5000)
         }
-    },[sesionInternface])
+    }, [sesionInternface])
 
     const talk = (msg: string) => {
         if (sesionInternface) {
@@ -118,9 +126,13 @@ export const AvatarPage = () => {
         navigate("/Interview")
     }
 
-    useEffect (() => {
+    useEffect(() => {
         doInit()
     }, []);
+
+    const [mesg1,setMsg1] = useState("Hello!")
+    const [mesg2,setMsg2] = useState("I'm good, let's begin!")
+
 
     return (
         <div className={"backGround"}>
@@ -134,16 +146,20 @@ export const AvatarPage = () => {
                     </div>
                     <div className="chatSectionWrap">
                         <div className="demoMessages">
-                            <TextArea className="sentMessage">Hello, how are you?</TextArea>
-                            <TextArea className="sentResponse">I'm good, let's begin!</TextArea>
+                            <TextArea className="sentMessage" value={mesg1}></TextArea>
+                            <TextArea className="sentResponse" value={mesg2}></TextArea>
                         </div>
-                        <MessegeForm sendMsg={talk} ></MessegeForm>
+                        <MessegeForm sendMsg={talk} addToList={(value: string) => {
+                            setMsg2(value)
+                        }}></MessegeForm>
                         {!connection && (
                             // <div className="initializeConnection">Initializing connection...</div>
-                            <img className="initializeConnection" src={"https://media.tenor.com/CY7LvPZrd-UAAAAi/circle-loading.gif"} style={{width:"50px", height:"20"}}/>
+                            <img className="initializeConnection"
+                                 src={"https://media.tenor.com/CY7LvPZrd-UAAAAi/circle-loading.gif"}
+                                 style={{width: "50px", height: "20"}}/>
                         )}
                     </div>
-                    <Button className="exitAvatarBtn" style={{ position: "absolute" }} onClick={async () => {
+                    <Button className="exitAvatarBtn" style={{position: "absolute"}} onClick={async () => {
                         if (sesionInternface) {
                             await closeConnectionHandler(sesionInternface);
                             setConnection(false);

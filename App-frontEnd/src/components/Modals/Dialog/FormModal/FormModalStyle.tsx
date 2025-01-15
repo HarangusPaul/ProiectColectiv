@@ -33,9 +33,9 @@ function FormModal(props: ModalFormProps) {
             <ModalContent style={{backgroundColor: "#28304B"}}>
                 <div>{props.form}</div>
             </ModalContent>
-            <ModalActions style={{backgroundColor: "#28304B"}}>
-                <Button className="modalButton" onClick={() => props.setOpen(false)}>Done!</Button>
-            </ModalActions>
+            {/*<ModalActions style={{backgroundColor: "#28304B"}}>*/}
+            {/*    <Button className="modalButton" onClick={() => props.setOpen(false)}>Done!</Button>*/}
+            {/*</ModalActions>*/}
         </Modal>
     )
 }

@@ -7,6 +7,8 @@ import com.example.app.service.DocumentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/app/v2/documents")
 public class DocumentController {
@@ -35,4 +37,16 @@ public class DocumentController {
             return null;
         }
     }
+
+
+    @GetMapping("/getUserData")
+    public List<String> getDocumentData(@RequestParam String email){
+        try {
+            var documentData = documentService.returnUserData(email);
+            return documentData;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 }

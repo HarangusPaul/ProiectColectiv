@@ -33,10 +33,11 @@ export const NavBar = () =>{
             {type?<MenuItem
                 name='Page 2'
                 active={false}
+
                 onClick={() => { navigateTo("/CompanyDocumentPage") }}
             >
                 <Icon name='file archive outline' />
-                CompanyDocumentPage
+                Docx
             </MenuItem>:<MenuItem
                 name='Page 2'
                 active={false}
@@ -75,7 +76,7 @@ export const NavBar = () =>{
             <MenuItem className={"signOut"}
                 name='Sign out'
                 active={false}
-                onClick={() => { localStorage.removeItem("token");window.location.reload(); }}
+                onClick={() => { localStorage.removeItem("token");localStorage.removeItem("accountType");window.location.reload(); }}
             >
                 <Icon name='power off' />
                 Sign out

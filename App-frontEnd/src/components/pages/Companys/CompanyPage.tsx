@@ -12,6 +12,7 @@ export const CompanyPage = (props: any) => {
     const nav = useNavigate();
     const names = ["Position Available", "Skills Needed", "Close"];
     const [values, setValues] = useState([["SoftDeveloper", "Python,React", "80% Interview"]])
+    const [fileForward,setFileForward] = useState("")
     const data: DocumentTableProps = {
         deleteDocument: (index: number) => {
             const newItems = values.filter((_, i) => i !== index);
@@ -19,6 +20,7 @@ export const CompanyPage = (props: any) => {
         }, tableColumnNames: names, tableColumnValues: values
     }
     const [open, setOpen] = useState(false)
+    const [documentName,setDocumentName] = useState("")
     const [,] = useState()
     //astea is exemplu de folosire
 
@@ -31,7 +33,7 @@ export const CompanyPage = (props: any) => {
                         format!
                         Add your updated versions anytime, and delete the ones that are no longer relevant for a clean
                         search.</p>
-                    <FormModal form={<DocumentForm/>} modalTitle={"Document adding"} open={open} setOpen={setOpen}
+                    <FormModal form={<DocumentForm setFileForward={setFileForward}  setDocumentName={setDocumentName}/>} modalTitle={"Document adding"} open={open} setOpen={setOpen}
                                style={{fontFamily: "'Comic-Sans', sans-serif", fontSize: "16px"}}/>
                 </div>
 

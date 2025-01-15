@@ -15,9 +15,9 @@ const SERVER_URL = heygen_API.serverUrl;
 const localServer:string = "https://server1-dot-tr-avatar-newui-ro.ew.r.appspot.com"
 // const localServer:string = "http://localhost:3001"
 
-const ollamaApi = "http://25.35.0.182:11434"
+const ollamaApi = "http://34.79.44.157"
 
-
+export const MessegeSubject = new Subject<string>()
 
 export interface Voice{data:string,session:any}
 
@@ -280,6 +280,7 @@ async function talkToOpenAI(prompt:any, sessionInterface:SessionInterface) {
         throw new Error('Server error');
     } else {
         // const data = await response.json();
+        MessegeSubject.next(response.data.message.content)
         return response.data.message.content;
     }
 }
