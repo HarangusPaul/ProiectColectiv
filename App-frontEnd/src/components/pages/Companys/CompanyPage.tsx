@@ -38,7 +38,7 @@ export const CompanyPage = (props: any) => {
                 </div>
 
                 <div className={"tableDiv"}>
-                    <Button onClick={() => {nav("/CompanyDocumentPage")}} className={"activeTitleButton"}>Go to CV</Button>
+                    <Button onClick={() => {nav("/DocumentPage")}} className={"activeTitleButton"}>Go to CV</Button>
                     <DocumentTable props={data}/>
                 </div>
             </div>
