@@ -4,6 +4,7 @@ import "./MessegeForm.css"
 
 export interface MessegeFormInternface{
     sendMsg:any
+    addToList:any
 }
 
 
@@ -22,6 +23,7 @@ export const MessegeForm = (props:MessegeFormInternface) =>{
             <Input className={"MessegeInput"} value={msg} onChange={(event)=>{setMsg(event.target.value)}}></Input>
             <Button className="sendMessage" onClick={()=>{
                 props.sendMsg(msg)
+                props.addToList(msg)
                 setMsg("")
             }}>Send</Button>
         </div>

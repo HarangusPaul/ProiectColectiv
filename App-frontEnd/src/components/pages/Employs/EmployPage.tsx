@@ -3,11 +3,12 @@ import {Button, Divider} from "semantic-ui-react";
 import {NavBar} from '../../NavBar/NavBar';
 import {SimpleTable, SimpleTableProps} from "../../Inputs/Table/SimpleTable";
 import FormModal from "../../Modals/Dialog/FormModal/FormModal";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {DocumentForm} from "../../Inputs/Forms/DocumentForm/DocumentForm";
 import {DocumentTable, DocumentTableProps} from "../../Inputs/Table/DocumentTable";
 import {useNavigate} from "react-router-dom";
 import {InterviewForm} from "../../Inputs/Forms/InterviewForm/InterviewForm";
+import axios from "axios";
 
 export const EmployPage = (props: any) => {
     const nav = useNavigate();
@@ -25,17 +26,51 @@ export const EmployPage = (props: any) => {
     //astea is exemplu de folosire
 
 
-    const Users: ({ text: string; value: string; key: string } | { text: string; value: string; key: string })[] = [
-        {
-            key: 'Jenny Hess',
-            text: 'Jenny Hess',
-            value: 'Jenny Hess',
-        },
-        {
-            key: 'Elliot Fu',
-            text: 'Elliot Fu',
-            value: 'Elliot Fu',},
-    ]
+    useEffect(()=>{
+        axios.get("http://localhost:8080/app/v1/accounts/get-all-non-company").then((res)=>{
+            const data = res.data;
+            console.log(data)
+            const outputList = data.map((name:string) => ({
+                key: name,
+                text: name,
+                value: name,
+            }));
+            setUsers(outputList)
+
+
+            const infoOptions = [
+                ["Python 8/10,React 7/10", "No interview tried", "AI"],
+                ["Java 7/10,Angular 6/10", "No interview tried", "Backend Java"],
+                ["React 7/10,Python 6/10", "No interview tried", "FrontEnd"]
+            ];
+
+            const getRandomInfo = () => {
+                const randomIndex = Math.floor(Math.random() * infoOptions.length);
+                return infoOptions[randomIndex];
+            };
+
+            const newUsers = data.map((name:string) => [name, ...getRandomInfo()]);
+
+            // @ts-ignore
+            setValues(newUsers)
+        })
+    },[])
+
+    const [Users,setUsers] = useState<({ text: string; value: string; key: string } | { text: string; value: string; key: string })[]>([
+    ])
+
+
+    // const Users: ({ text: string; value: string; key: string } | { text: string; value: string; key: string })[] = [
+    //     {
+    //         key: 'Jenny Hess',
+    //         text: 'Jenny Hess',
+    //         value: 'Jenny Hess',
+    //     },
+    //     {
+    //         key: 'Elliot Fu',
+    //         text: 'Elliot Fu',
+    //         value: 'Elliot Fu',},
+    // ]
     return (
         <div className={"backGround"}>
             <div className={"pageDiv"}>
@@ -44,7 +79,7 @@ export const EmployPage = (props: any) => {
                     <p className={"bodyTextDocuments"}>All of the employes that fits your description are in the system are listed below.
                         Add your updated versions anytime, and delete the ones that are no longer relevant for a clean
                         search.</p>
-                    <FormModal form={<InterviewForm users={Users}/>} modalTitle={"cANDIDATE"} open={open} setOpen={setOpen}
+                    <FormModal form={<InterviewForm users={Users}/>} modalTitle={"Cantidate"} open={open} setOpen={setOpen}
                                style={{fontFamily: "'Comic-Sans', sans-serif", fontSize: "16px"}}/>
                 </div>
 

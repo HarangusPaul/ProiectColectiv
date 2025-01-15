@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "company_account")
 @AllArgsConstructor
@@ -14,8 +16,7 @@ import lombok.Setter;
 @Setter
 public class CompanyAccount extends BaseEntity{
     @Column
-    @OneToOne(cascade = CascadeType.ALL)
-    private AccountCredentials accountCredentials;
+    private UUID accountID;
 
     @Column
     private String companyName;

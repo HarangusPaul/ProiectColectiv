@@ -26,5 +26,9 @@ export class UserService {
                 console.log(error);
             });
     }
+
+    verifyIfCompany(data: UserLoginModel,BEARER_TOKEN:string) {
+        return axios.post(`${ipServer}/accounts/company-accounts/find`, data)
+    }
 }
 

@@ -3,15 +3,22 @@ import {Divider, Form, Input} from "semantic-ui-react";
 import {useEffect, useState} from "react";
 import {UploadButton} from "../../Buttons/UploadButton/UploadButton";
 
-export const DocumentForm = (setFileForward:any) =>{
+export interface FileSender{
+    setFileForward:any,
+    setDocumentName:any
+}
+
+export const DocumentForm = (prop:FileSender) =>{
 
     const [documentName,setDocumentName] = useState("")
     const [file,setFile] = useState("")
 
 
     useEffect(()=>{
-        if(file != "")
-            setFileForward(file)
+        if(file != ""){
+            prop.setFileForward(file)
+            prop.setDocumentName(documentName)
+        }
     },[file])
     return (
         <div style={{display:"grid",width:"17vw"}}>

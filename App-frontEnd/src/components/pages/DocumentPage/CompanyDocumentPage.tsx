@@ -8,10 +8,11 @@ import { DocumentTable, DocumentTableProps } from "../../Inputs/Table/DocumentTa
 import { SimpleTable, SimpleTableProps } from "../../Inputs/Table/SimpleTable";
 import FormModalStyle from "../../Modals/Dialog/FormModal/FormModalStyle";
 
-interface JobData {
+export interface JobData {
     jobTitle: string;
     requiredSkills: string;
     salaryRange: string;
+    description: string;
 }
 
 export const CompanyDocumentPage: React.FC = () => {
@@ -37,12 +38,6 @@ export const CompanyDocumentPage: React.FC = () => {
     const [openDocumentModal, setOpenDocumentModal] = useState<boolean>(false);
     const [openJobModal, setOpenJobModal] = useState<boolean>(false);
 
-    // Handle job submission
-    const handleJobSubmit = (data: JobData) => {
-        console.log(data); // Here you can handle the submitted job data
-        // You may want to add it to jobValues or send it to an API
-        setJobValues((prev) => [...prev, [data.jobTitle, data.requiredSkills, data.salaryRange]]);
-    };
 
 
 
@@ -55,26 +50,27 @@ export const CompanyDocumentPage: React.FC = () => {
                     Upload job listings and view potential candidates that match your requirements.
                 </p>
                 <FormModal
-                    form={<DocumentForm />}
+                    form={<DocumentForm  setFileForward={(a:string)=>{console.log(1)}} setDocumentName={(a:string)=>{console.log(1)}}/>}
                     modalTitle={"Upload Document"}
                     open={openDocumentModal}
                     setOpen={setOpenDocumentModal}
                     style={{ fontFamily: "'Comic-Sans', sans-serif", fontSize: "16px" }}
                 />
                 <FormModalStyle
-                    form={<JobUploadForm onSubmit={handleJobSubmit} />} // Pass handleJobSubmit
+                    form={<JobUploadForm />} // Pass handleJobSubmit
                     modalTitle={"Upload Job Listing"}
                     open={openJobModal}
                     setOpen={setOpenJobModal}
                     style={{
                         width: "25vw",
-                        height: "48vh",
+                        height: "70vh",
                         borderRadius: "10px",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                         padding: "5px",
                         backgroundColor: "#28304B",
                         fontFamily: "'Comic-Sans', sans-serif",
-                        fontSize: "16px"
+                        fontSize: "16px",
+                        overflow:"scroll"
                     }}
                 />
             </div>
