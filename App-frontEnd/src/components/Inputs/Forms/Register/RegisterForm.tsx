@@ -78,7 +78,7 @@ export const RegisterForm= () =>{
                 {error?(<label className={"errorLabel"}>{errorMessage}</label>):(<></>)}
 
             <Button animated className={"SendButton"} onClick={(e) => {submit(e)}}>
-                <ButtonContent visible>Next</ButtonContent>
+                <ButtonContent visible className="buttonText">Register</ButtonContent>
                 <ButtonContent hidden>
                     <Icon name='arrow right' />
                 </ButtonContent>

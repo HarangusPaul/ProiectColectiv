@@ -8,33 +8,38 @@
 /*.ui.input.Password*/
 /*.ui.input.ConfirmPassword*/
 
+.ui.input>input{
+    background: transparent !important;
+    border: none !important;
+    font-family: "Poppins", sans-serif;
+    font-size: small;
+}
+
 
 .ui.input.Email {
     position: absolute;
-    border-top: white;
-    border-left: black;
-    border-right: white;
-    margin-bottom: 40px;
     /* height: 20px; */
-    width: 20vw;
-    left: 11%;
+    width: 23.3vw;
+    left: 12%;
     text-align: left;
-    top: 25%;
+    top: 23%;
     outline: none;
+    border: 2px solid #C1CEF5;
+    border-radius: 7px;
 }
+
+
 
 .ui.input.Username {
     position: absolute;
-    border-top: white;
-    border-left: white;
-    border-right: white;
-    margin-bottom: 40px;
     /* height: 20px; */
-    width: 20vw;
-    left: 11%;
+    width: 23.3vw;
+    left: 12%;
     text-align: left;
-    top: 40%;
+    top: 37%;
     outline: none;
+    border: 2px solid #C1CEF5;
+    border-radius: 7px;
 }
 
 
@@ -45,11 +50,13 @@
     border-left: white;
     border-right: white;
     /* height: 20px; */
-    width: 20vw;
-    left: 11%;
+    width: 23.3vw;
+    left: 12%;
     text-align: left;
-    top: 55%;
+    top: 52%;
     outline: none;
+    border: 2px solid #C1CEF5;
+    border-radius: 7px;
 }
 
 
@@ -59,11 +66,13 @@
     border-left: white;
     border-right: white;
     /* height: 20px; */
-    width: 20vw;
-    left: 11%;
+    width: 23.3vw;
+    left: 12%;
     text-align: left;
-    top: 70%;
+    top: 67%;
     outline: none;
+    border: 2px solid #C1CEF5;
+    border-radius: 7px;
 }
 
 @media (max-width: 1150px) {
@@ -77,9 +86,10 @@
 
 .ui.animated.button.SendButton{
     top:90%;
-    width: 180px;
-    left:140px;
+    width: 23.3vw;
+    left:42px;
     position: absolute;
+    background-color: #4260D8;
 }
 
 .formDiv{
