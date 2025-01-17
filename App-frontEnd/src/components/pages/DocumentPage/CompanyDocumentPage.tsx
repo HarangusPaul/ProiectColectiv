@@ -41,8 +41,9 @@ export const CompanyDocumentPage: React.FC = () => {
 
     useEffect(()=>{
         const token = localStorage.getItem("token")
-        if(token !== null){
-            axios.get("http://localhost:8080/app/v2/documents/getCompanyData?email=paulharangus@gmail.com", {
+        const email = localStorage.getItem("email")
+        if(token !== null && email!==null){
+            axios.get(`http://localhost:8080/app/v2/documents/getCompanyData?email=${email}`, {
                 headers: {
                     'Authorization': `Bearer ${JSON.parse(token).token}`,
                     'Content-Type': 'application/json'

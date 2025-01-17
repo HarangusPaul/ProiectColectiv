@@ -57,6 +57,7 @@ export const LogInForm = () => {
                 const string = JSON.stringify(token);
                 localStorage.setItem("token", string);
                 const tokenString: string = token.token;
+                localStorage.setItem("email", email);
                 userService.verifyIfCompany(data, tokenString).then(() => {
                     localStorage.setItem("accountType", "company");
                     refreshPage();

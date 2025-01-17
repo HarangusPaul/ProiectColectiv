@@ -1,7 +1,7 @@
 import "./HomePage.css"
 import {Button, Dropdown} from "semantic-ui-react";
 import {ErrorModal} from "../../Modals/Dialog/ErrorModal/ErrorModal";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {ModalProps, ResponsesModal} from "../../Modals/Dialog/ResponsesModal/ResponsesModal";
 import {ApprovalModal} from "../../Modals/Dialog/ApprovementModal/ApprovalModal";
@@ -21,6 +21,14 @@ export const HomePage = () => {
         {key: '2', text: 'Option 2', value: 'Option 2'},
     ]);
 
+    const [notNumber,setNotNumber] = useState("")
+
+    useEffect(()=>{
+        const numberOfNot = localStorage.getItem("notificationCount")
+        if(numberOfNot !== null)
+            setNotNumber(numberOfNot)
+        else setNotNumber("0")
+    },[])
 
     const modalProps: ModalPropsChoice = {
         open: state,
@@ -40,7 +48,7 @@ export const HomePage = () => {
                     <div className="textContainer">
                         {/*<h1 className="h1homePage">Home Page</h1>*/}
                         <h2 className="h2helloUser">Welcome, user!</h2>
-                        <p className="notificationText">You have *N* notifications!</p>
+                        <p className="notificationText">You have {notNumber} notifications!</p>
                         <p className="informationText">
                             Document Page: Upload your document here! <br />
                             Interview Page: Start your interview here! <br />

@@ -2,6 +2,8 @@ package com.example.app.service;
 
 
 import com.example.app.controller.request.DocumentRequest;
+import com.example.app.controller.request.JobsResponse;
+import com.example.app.controller.request.PositionResponse;
 import com.example.app.domain.AccountCredentials;
 import com.example.app.domain.CompanyAccount;
 import com.example.app.domain.Document;
@@ -10,12 +12,17 @@ import com.example.app.repository.AccountCredentialsRepository;
 import com.example.app.repository.CompanyRepository;
 import com.example.app.repository.DocumentRepository;
 import com.example.app.repository.UserToPositionCorelationRepository;
+import com.example.app.service.pdf.PDFDecoder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,57 +50,84 @@ public class DocumentService {
         updateData(user);
         var documentData = document.returnDocumentEntity(user, !company.isEmpty());
         documentRepository.save(documentData);
+
         analyzeData(documentData);
     }
 
     public static List<List<String>> parseStringToList(String input) {
-        // Remove the surrounding brackets and extra whitespace
-        input = input.trim();
-        input = input.substring(1, input.length() - 1); // Remove outer square brackets
+        // Split the data into individual entries
+        // Split the data into individual entries
+        List<String> entries = Arrays.asList(input.split("(?<=\\]),\\s*(?=\\[)")); // Split by "], [" but keep brackets
 
-        // Split by closing square brackets, indicating the end of a list
-        String[] rows = input.split("\\],\\[");
+        // Parse each entry into a List<List<String>> using streams
+        List<List<String>> parsedData = entries.stream()
+                .map(item -> item.replaceAll("[\\[\\]]", "")) // Remove square brackets
+                .map(item -> Arrays.stream(item.split("\",\\s*\"")) // Split only between fields enclosed in quotes
+                        .map(str -> str.replaceAll("^\"|\"$", "")) // Remove leading and trailing quotes
+                        .collect(Collectors.toList()))
+                .collect(Collectors.toList());
+        return parsedData;
+    }
 
-        List<List<String>> result = new ArrayList<>();
 
-        // Iterate through each row and split by commas to separate the elements
-        for (String row : rows) {
-            // Split by commas, making sure to handle commas in the string correctly
-            String[] elements = row.split("\",\"");
+    public static JsonNode mapStringToJson(String jsonString) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            // Parse the JSON string into a JsonNode
+            return objectMapper.readTree(jsonString);
+        } catch (JsonProcessingException e) {
+            // Handle parsing exceptions
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-            // Remove any quotes surrounding the elements
-            for (int i = 0; i < elements.length; i++) {
-                elements[i] = elements[i].replace("\"", "");
-            }
-
-            // Add the row to the result as a list of strings
-            List<String> innerList = new ArrayList<>();
-            for (String element : elements) {
-                innerList.add(element);
-            }
-
-            result.add(innerList);
+    public List<JobsResponse> getAllUsersJobs(String Email) {
+        List<JobsResponse> listOfCurrentJobUsers = new ArrayList<>();
+        var company = accountCredentialsRepository.findByEmail(Email);
+        var documentDataCompany = documentRepository.findAll().stream().filter(c -> c.getUser().returnId().equals(company.returnId())).toList().get(0);
+        var documentDataCompanyPositions = parseStringToList(documentDataCompany.getData());
+        var jobsAnlyzed = userToPositionCorelationRepository.findAll().stream().filter(pos -> pos.getCompanyId().equals(company.returnId()) && pos.getScore() > 50).toList();
+        for (var job : jobsAnlyzed) {
+            var user = accountCredentialsRepository.findAll().stream().filter(accountCredentials -> accountCredentials.returnId().equals(job.getUserId())).toList().get(0);
+            listOfCurrentJobUsers.add(new JobsResponse(user.getEmail(), documentDataCompanyPositions.get(job.getPositionIndex()).get(1), job.getScore(), documentDataCompanyPositions.get(job.getPositionIndex()).get(0)));
         }
 
-        return result;
+        return listOfCurrentJobUsers;
     }
+
+    public List<PositionResponse> getAllUserJobs(String email) {
+        List<PositionResponse> positionResponses = new ArrayList<>();
+        var user = accountCredentialsRepository.findByEmail(email);
+        var allJobs = userToPositionCorelationRepository.findAll().stream().filter(p -> p.getUserId().equals(user.returnId())).toList();
+        for (var job : allJobs) {
+            var company = parseStringToList(documentRepository.findAll().stream().filter(document -> document.getUser().returnId().equals(job.getCompanyId())).toList().get(0).getData()).get(job.getPositionIndex());
+            positionResponses.add(new PositionResponse(company.get(0), company.get(1), job.getScore()));
+        }
+        return positionResponses;
+    }
+
     private void analyzeData(Document document) {
         var all_company = companyRepository.findAll().stream().map(CompanyAccount::getAccountID).toList();
-        var all_users_data = this.documentRepository.findAll().stream().filter(user -> all_company.contains(user.getUser().returnId())).map(Document::getUser).toList();
-        var preparedData = parseStringToList(document.getData());
 
-
-        for(var userData:all_users_data){
-            var data = returnUserData(userData.getEmail());
+        for(var companyId:all_company){
+            var companyDocument = documentRepository.findAll().stream().filter(document1 -> document1.getUser().returnId().equals(companyId)).toList().get(0);
+            var companyDocumentData = parseStringToList(companyDocument.getData());
             int index = 0;
-            for(var position:preparedData){
-                /// user data ii in "data" si "position" e descrierea pozitiei
-                var score = "0";///todo:Gummy adauga o functie de genul extractskills cu prompt-ul dat de ale functia template o gasesti in PDFDecoder
-                userToPositionCorelationRepository.save(new UserToPositionCorelation(userData.returnId(),document.getUser().returnId(),index, Float.valueOf(score)));
+            for(var position:companyDocumentData){
+                String score = null;
+                try {
+                    score = PDFDecoder.getUserSkillOnPosition(position, document.getData());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                userToPositionCorelationRepository.save(new UserToPositionCorelation(document.getUser().returnId(), companyId, index, Float.valueOf(score)));
                 index++;
             }
         }
+
     }
+
 
     public List<Document> returnAll() {
         return documentRepository.findAll();
@@ -106,8 +140,8 @@ public class DocumentService {
 
 
     private void updateData(AccountCredentials user) {
-        var document = documentRepository.findByUser(user);
-        this.documentRepository.delete(document);
+//        var document = documentRepository.findByUser(user);
+//        this.documentRepository.delete(document);
     }
 
     public List<String> returnUserData(String email) {
@@ -135,14 +169,33 @@ public class DocumentService {
         // Iterate over each object in the JSONArray
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-
+            List<String> technologiesList = null;
             // Extract category, technologies (as comma-separated string), and experience
             String category = obj.getString("category");
-            List<String> technologiesList = obj.getJSONArray("technologies").toList().stream()
-                    .map(String::valueOf)  // Convert each object to a String
-                    .collect(Collectors.toList());
+            try {
+                technologiesList = List.of(obj.getString("technologies").split(","));
+            } catch (Exception e) {
+                try {
+                    technologiesList = obj.getJSONArray("technologies").toList().stream()
+                            .map(String::valueOf)  // Convert each object to a String
+                            .collect(Collectors.toList());
+                } catch (Exception ex) {
+
+                }
+            }
+
             String technologies = String.join(",", technologiesList);
-            int experience = obj.getInt("experience");
+            Integer experience = null;
+            try {
+                experience = obj.getInt("experience");
+            } catch (Exception e) {
+                try {
+                    var experienceS = obj.getString("experience");
+                    experience = Integer.parseInt(experienceS.replace("%",""));
+                } catch (Exception ex) {
+                }
+            }
+
 
             // Add the formatted data to the result list
             resultList.add(String.format("[%s,%s,%d]", category, technologies, experience));

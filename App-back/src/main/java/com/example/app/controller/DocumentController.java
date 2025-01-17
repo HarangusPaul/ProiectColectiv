@@ -2,6 +2,8 @@ package com.example.app.controller;
 
 
 import com.example.app.controller.request.DocumentRequest;
+import com.example.app.controller.request.JobsResponse;
+import com.example.app.controller.request.PositionResponse;
 import com.example.app.models.DocumentDTO;
 import com.example.app.service.DocumentService;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +55,27 @@ public class DocumentController {
     public String getCompanyDocumentData(@RequestParam String email){
         try {
             var documentData = documentService.returnCompanyData(email);
+            return documentData;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+
+    @GetMapping("/getCompanyPositions")
+    public List<JobsResponse> getCompanyPositions(@RequestParam String email){
+        try {
+            var documentData = documentService.getAllUsersJobs(email);
+            return documentData;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    @GetMapping("/getUserPositions")
+    public List<PositionResponse> getUserPositions(@RequestParam String email){
+        try {
+            var documentData = documentService.getAllUserJobs(email);
             return documentData;
         }catch (Exception e){
             return null;

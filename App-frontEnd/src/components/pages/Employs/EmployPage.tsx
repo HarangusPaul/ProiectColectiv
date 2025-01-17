@@ -9,7 +9,12 @@ import {DocumentTable, DocumentTableProps} from "../../Inputs/Table/DocumentTabl
 import {useNavigate} from "react-router-dom";
 import {InterviewForm} from "../../Inputs/Forms/InterviewForm/InterviewForm";
 import axios from "axios";
-
+interface Job {
+    email: string;
+    technologies: string;
+    score: string;  // score is now a string
+    possition: string;  // "possition" is corrected to "position"
+}
 export const EmployPage = (props: any) => {
     const nav = useNavigate();
     const names = ["User Name", "Skills Set (Important)", "Interview Score","PosstionFitted"];
@@ -25,36 +30,60 @@ export const EmployPage = (props: any) => {
     const [,] = useState()
     //astea is exemplu de folosire
 
+    const mapJobData = (data: Job[]): [string, string, string, string][] => {
+        return data.map(item => [
+            item.email,
+            item.technologies,
+            item.score.toString(),
+            item.possition
+        ]);
+    };
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/app/v1/accounts/get-all-non-company").then((res)=>{
-            const data = res.data;
-            console.log(data)
-            const outputList = data.map((name:string) => ({
-                key: name,
-                text: name,
-                value: name,
-            }));
-            setUsers(outputList)
-
-
-            const infoOptions = [
-                ["Python 8/10,React 7/10", "No interview tried", "AI"],
-                ["Java 7/10,Angular 6/10", "No interview tried", "Backend Java"],
-                ["React 7/10,Python 6/10", "No interview tried", "FrontEnd"]
-            ];
-
-            const getRandomInfo = () => {
-                const randomIndex = Math.floor(Math.random() * infoOptions.length);
-                return infoOptions[randomIndex];
-            };
-
-            const newUsers = data.map((name:string) => [name, ...getRandomInfo()]);
-
-            // @ts-ignore
-            setValues(newUsers)
-        })
+        const token = localStorage.getItem("token")
+        const email = localStorage.getItem("email")
+        if(token !== null && email !== null){
+            axios.get(`http://localhost:8080/app/v2/documents/getCompanyPositions?email=${email}`, {
+                headers: {
+                    'Authorization': `Bearer ${JSON.parse(token).token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res)=>{
+                console.log(res.data)
+                setValues(mapJobData(res.data))
+            })
+        }
     },[])
+
+    // useEffect(()=>{
+    //     axios.get("http://localhost:8080/app/v1/accounts/get-all-non-company").then((res)=>{
+    //         const data = res.data;
+    //         console.log(data)
+    //         const outputList = data.map((name:string) => ({
+    //             key: name,
+    //             text: name,
+    //             value: name,
+    //         }));
+    //         setUsers(outputList)
+    //
+    //
+    //         const infoOptions = [
+    //             ["Python 8/10,React 7/10", "No interview tried", "AI"],
+    //             ["Java 7/10,Angular 6/10", "No interview tried", "Backend Java"],
+    //             ["React 7/10,Python 6/10", "No interview tried", "FrontEnd"]
+    //         ];
+    //
+    //         const getRandomInfo = () => {
+    //             const randomIndex = Math.floor(Math.random() * infoOptions.length);
+    //             return infoOptions[randomIndex];
+    //         };
+    //
+    //         const newUsers = data.map((name:string) => [name, ...getRandomInfo()]);
+    //
+    //         // @ts-ignore
+    //         setValues(newUsers)
+    //     })
+    // },[])
 
     const [Users,setUsers] = useState<({ text: string; value: string; key: string } | { text: string; value: string; key: string })[]>([
     ])

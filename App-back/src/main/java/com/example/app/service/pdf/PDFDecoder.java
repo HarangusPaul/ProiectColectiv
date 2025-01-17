@@ -4,13 +4,18 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.List;
+import java.util.Scanner;
+
 import org.json.JSONObject;
 
 public class PDFDecoder {
@@ -71,6 +76,7 @@ public class PDFDecoder {
             return extractedSkills;
         }
     }
+
     public static String sendPostRequest(String skillsData) {
         try {
             // Define the URL endpoint
@@ -123,5 +129,51 @@ public class PDFDecoder {
             // Handle exceptions (e.g., malformed URL, IO issues)
             return "Error: " + e.getMessage();
         }
+    }
+
+    public static String getUserSkillOnPosition(List<String> positionData,String userData) throws Exception {
+        // URL to make the POST request
+        String apiUrl = "http://34.79.44.157/api/generate";
+
+
+        var qualifications = "[{\\\\\\\"category\\\\\\\": \\\\\\\"Frontend\\\\\\\", \\\\\\\"technologies\\\\\\\": [\\\\\\\"JavaScript\\\\\\\", \\\\\\\"TypeScript\\\\\\\", \\\\\\\"React-Native\\\\\\\", \\\\\\\"Angular\\\\\\\"], \\\\\\\"experience\\\\\\\": 60}, {\\\\\\\"category\\\\\\\": \\\\\\\"Backend\\\\\\\", \\\\\\\"technologies\\\\\\\": [\\\\\\\"Java\\\\\\\", \\\\\\\"Spring Boot\\\\\\\", \\\\\\\"Spring\\\\\\\", \\\\\\\"C#\\\\\\\", \\\\\\\"Python\\\\\\\", \\\\\\\"SQL\\\\\\\", \\\\\\\"Docker\\\\\\\", \\\\\\\"Git\\\\\\\"], \\\\\\\"experience\\\\\\\": 60}, {\\\\\\\"category\\\\\\\": \\\\\\\"Communication\\\\\\\", \\\\\\\"technologies\\\\\\\": [\\\\\\\"Software Engineering\\\\\\\", \\\\\\\"PrivateGPT\\\\\\\", \\\\\\\"PyTorch\\\\\\\", \\\\\\\"Android Studio\\\\\\\", \\\\\\\"Kotlin\\\\\\\"], \\\\\\\"experience\\\\\\\": 40}]\\\\\\\"\\n\"\n";
+        var positions = "[\\\"Job position\\\", \\\"Requirements\\\", \\\"salary range\\\", \\\"Candidate responsabilities\\\"] .These is the job I applied for : [\\\"Software Engineer\\\", \\\"Java, Python, SQL\\\", \\\"80-150\\\", \\\"Develops software applications, performs debugging and code reviews.\\\"]";
+
+        // JSON body for the request
+        String jsonBody = "{\n" +
+                "  \"model\": \"qwen2.5:1.5b\",\n" +
+                "  \"stream\": false,\n" +
+                "  \"prompt\": \"Compare my qualifications and experience with the requirements of the jobs in the company's list and return only one matching score between 10 and 100 (divisible by 10) for each job. No description, no words, nothing else. Just those 1 numbers, separated only by a comma. Each job has the following format:" +
+                positions + " and here is the list of my qualifications and experience: (each dictionary contains a specific qualification):"     +
+                qualifications
+                + "}";
+
+        // Create a URL object
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        // Configure the HTTP connection
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+
+        // Write the JSON body to the output stream
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonBody.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        // Read the response
+        StringBuilder response = new StringBuilder();
+        try (Scanner scanner = new Scanner(connection.getInputStream(), "utf-8")) {
+            while (scanner.hasNextLine()) {
+                response.append(scanner.nextLine());
+            }
+        }
+
+        // Parse the JSON response and extract the 'response' property
+        JSONObject jsonResponse = new JSONObject(response.toString());
+        return jsonResponse.getString("response");
     }
 }

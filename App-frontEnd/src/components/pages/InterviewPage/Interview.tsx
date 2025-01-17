@@ -15,7 +15,7 @@ export const Interview = () => {
 
 
     useEffect(() => {
-        const email = "paulharangus1@gmail.com"
+        const email = localStorage.getItem("email")
         axios.get(`http://localhost:8080/app/v1/accounts/emailInterview/${email}`).then((res) => {
             const data = res.data
             try {

@@ -90,8 +90,9 @@ export const DocumentPage = (props: any) => {
 
     useEffect(()=>{
         const token = localStorage.getItem("token")
-        if(token !== null){
-            axios.get("http://localhost:8080/app/v2/documents/getUserData?email=paulharangus1@gmail.com", {
+        const email = localStorage.getItem("email")
+        if(token !== null && email !== null){
+            axios.get(`http://localhost:8080/app/v2/documents/getUserData?email=${email}`, {
             headers: {
                 'Authorization': `Bearer ${JSON.parse(token).token}`,
                 'Content-Type': 'application/json'

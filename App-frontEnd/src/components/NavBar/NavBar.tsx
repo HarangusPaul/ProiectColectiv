@@ -92,7 +92,7 @@ export const NavBar = () =>{
             <MenuItem className={"signOut"}
                 name='Sign out'
                 active={false}
-                onClick={() => { localStorage.removeItem("token");localStorage.removeItem("accountType");window.location.reload(); }}
+                onClick={() => { localStorage.removeItem("token");localStorage.removeItem("accountType");localStorage.removeItem("email");localStorage.removeItem("notificationCount");window.location.reload(); }}
             >
                 <Icon name='power off' />
                 Sign out

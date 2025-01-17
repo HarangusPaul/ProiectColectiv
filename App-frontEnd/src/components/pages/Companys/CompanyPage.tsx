@@ -3,10 +3,17 @@ import {Button, Divider} from "semantic-ui-react";
 import {NavBar} from '../../NavBar/NavBar';
 import {SimpleTable, SimpleTableProps} from "../../Inputs/Table/SimpleTable";
 import FormModal from "../../Modals/Dialog/FormModal/FormModal";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {DocumentForm} from "../../Inputs/Forms/DocumentForm/DocumentForm";
 import {DocumentTable, DocumentTableProps} from "../../Inputs/Table/DocumentTable";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+
+interface Job {
+    position: string;
+    skills: string;
+    score: string;
+}
 
 export const CompanyPage = (props: any) => {
     const nav = useNavigate();
@@ -23,6 +30,29 @@ export const CompanyPage = (props: any) => {
     const [documentName,setDocumentName] = useState("")
     const [,] = useState()
     //astea is exemplu de folosire
+    const mapJobData = (data: Job[]): [string, string, string][] => {
+        return data.map(item => [
+            item.position.trim().replace('"', ''),  // Clean up position string
+            item.skills,
+            item.score // Ensure score is treated as a string
+        ]);
+    };
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        const email = localStorage.getItem("email")
+        if(token !== null && email !== null){
+            axios.get(`http://localhost:8080/app/v2/documents/getUserPositions?email=${email}`, {
+                headers: {
+                    'Authorization': `Bearer ${JSON.parse(token).token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res)=>{
+                console.log(mapJobData(res.data))
+                setValues(mapJobData(res.data))
+            })
+        }
+    },[])
 
     return (
         <div className={"backGround"}>

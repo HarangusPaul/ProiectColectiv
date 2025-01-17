@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import { LogIn } from "../LogInPage/LogIn";
 import { Register } from "../RegisterPage/Register";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { HomePage } from "../HomePage/HomePage";
 import { ProtectedRoute } from "../../../utils/router/ProtectedRoute";
 import { TablePage } from "../TabelPage/TablePage";
@@ -20,11 +20,29 @@ import {CompanyPage} from "../Companys/CompanyPage";
 import {EmployPage} from "../Employs/EmployPage"; // Import CompanyDocumentPage
 import {Interview} from "../InterviewPage/Interview";
 import {PricePage} from "../PricePage/PricePage";
+import axios from "axios";
 
 export const MainPage = () => {
     const [pressed, setPressed] = useState(false);
     const notificationService = new NotificationService();
+    const [notifications, setNotifications] = useState([]);
 
+    useEffect(()=>{
+        const email = localStorage.getItem("email")
+        axios.get(`http://localhost:8080/app/v1/accounts/emailInterview/${email}`).then((res) => {
+            const data = res.data
+            try {
+                // @ts-ignore
+                const outputList = data.map((name:string) => ({
+                    title: name,
+                    message: "You got a notification regarding company: "+name+" which wants you to take part at an interview with our AI",
+                }));
+                setNotifications(outputList)
+                localStorage.setItem("notificationCount",outputList.length.toString())
+            } catch (e) {
+            }
+        });
+    },[])
     let auth = !credentialVerifier();
     return (
         <Router>
@@ -39,7 +57,7 @@ export const MainPage = () => {
             </Button>
 
             {
-                pressed ? <NotificationBar notificationList={notificationService.returnNotifications()} /> : (<div />)
+                pressed ? <NotificationBar notificationList={notifications} /> : (<div />)
             }
             <div className="App">
 
@@ -47,7 +65,7 @@ export const MainPage = () => {
 
                     <Routes>
                         <Route element={<ProtectedRoute />}>
-                            <Route path="/" element={<HomePage />} />
+                            <Route path="/" element={<HomePage  />} />
                             <Route path="/DocumentPage" element={<DocumentPage />} />
                             <Route path="/Interview" element={<Interview />} />
                             <Route path="/Avatar" element={< AvatarPage/>} />
